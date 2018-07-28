@@ -6,6 +6,7 @@ import Base: *
 using Compat: copyto!, undef
 import Compat
 using Compat.LinearAlgebra: I
+using Compat.Statistics: middle
 @importffts
 if VERSION >= v"0.7.0-DEV.602"
     import ..DSP: filt, filt!
@@ -59,5 +60,12 @@ export  FIRFilter,
         resample,
         setphase!,
         timedelay
+
+include("remez_fir.jl")
+export  remez,
+        RemezFilterType,
+        filter_type_bandpass,
+        filter_type_differentiator,
+        filter_type_hilbert
 
 end
